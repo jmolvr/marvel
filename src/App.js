@@ -1,13 +1,12 @@
 import React from 'react';
 import ListCharacterProvider from './context/ListCharacter';
-import Main from './pages/Main';
-
+import Routes from './routes';
 import './global.css';
 
 function App() {
   return (
     <ListCharacterProvider>
-      <Main />
+      <Routes />
     </ListCharacterProvider>
   );
 }

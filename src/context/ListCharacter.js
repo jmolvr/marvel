@@ -8,14 +8,12 @@ export default function ListCharacterProvider({ children }){
     const [listCharacter, setListCharacter] = useState([]);
 
     useEffect(() => {
-        async function carregarAlertas() {
+        async function loadData() {
             const response = await api.get("/characters?ts=1609028329&apikey=079df4f6c6a9cc8debb648d7454c46c7&hash=cf4ab3509d919b6b843b87abbdcd50bd&offset=0");
-            console.log("api chamada")
-            //console.log(response.data.data);
             setListCharacter(response.data.data.results);
         }
 
-        carregarAlertas();
+        loadData();
     }, []);
 
     return(
