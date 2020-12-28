@@ -1,0 +1,13 @@
+.characters-list{
+    margin: 0 auto;
+    max-width: 960px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
