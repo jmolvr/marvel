@@ -7,7 +7,7 @@ export default function Card({ id, nome, imgsrc }) {
     return (
         <Link to={"/character/" + id}>
             <div className="card">
-                <img src={imgsrc} />
+                <img src={imgsrc} alt={nome}/>
                 <div className="container">
                     <h4><b>{nome}</b></h4>
                 </div>

@@ -7,7 +7,7 @@ export default function Header() {
         <header className="menu-bg">
             <div className="menu">
                 <div className="menu-logo" >
-                    <a href="#">MARVEL</a>
+                    <a href="/">MARVEL</a>
                 </div>
             </div>
         </header>

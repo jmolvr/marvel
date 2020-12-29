@@ -4,12 +4,12 @@ import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import api from '../../services/api';
-
+import {useCharacter, useListSeries} from '../../context/ListCharacter';
 import './index.css';
 
 export default function CharacterPage() {
-    const [listSeries, setListSeries] = useState([]);
-    const [character, setCharacter] = useState([]);
+    const {listSeries, setListSeries} = useListSeries();
+    const {character, setCharacter} = useCharacter();
 
     let { id } = useParams(); //id do personagem
 
