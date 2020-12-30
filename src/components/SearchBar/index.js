@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import {useListCharacter} from '../../context/ListCharacter';
+import { useHistory } from 'react-router-dom';
+
 export default function SearchBar() {
 
     const [inputValue, setValue] = useState("");
-    const {handleLoadCharacterList} = useListCharacter();
+
+    let history = useHistory();
     function handleChange(event) {
         const { value } = event.target;
         setValue(value);
     }
 
     function handleSearch(){
-        handleLoadCharacterList(1, inputValue);
+        history.push(`/1?search=${inputValue}`);
     }
 
     return (

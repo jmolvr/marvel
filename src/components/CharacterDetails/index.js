@@ -5,7 +5,7 @@ export default function CharacterDetails({ character }) {
 
     const [characterEdit, setCharacterEdit] = useState(character);
     const [nameInputValue, setNameInputValue] = useState(character.name);
-    const [descriptionInputValue] = useState(character.description);
+    const [descriptionInputValue, setDescriptionInputValue] = useState(character.description);
     const [isEditing, setEditing] = useState(false);
 
     function handleNameInputChange(event) {
@@ -15,11 +15,20 @@ export default function CharacterDetails({ character }) {
 
     function handleDescriptionChange(event) {
         const { value } = event.target;
-        setNameInputValue(value);
+        setDescriptionInputValue(value);
     }
 
     function toggleEdit() {
-        isEditing ? setEditing(false) : setEditing(true);
+        if(isEditing){
+            setCharacterEdit({
+                name: nameInputValue,
+                description: descriptionInputValue
+            })
+            setEditing(false);
+        } 
+        else{
+            setEditing(true);
+        }
     }
     return (
         <div className="character-bg">
@@ -34,8 +43,8 @@ export default function CharacterDetails({ character }) {
 
                         </div> :
                         <div>
-                            <h3>{character.name}</h3>
-                            <p>{character.description}</p>
+                            <h3>{characterEdit.name}</h3>
+                            <p>{characterEdit.description}</p>
                         </div>
                     }
                     <div>
