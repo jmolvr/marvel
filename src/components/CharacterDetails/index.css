@@ -1,0 +1,24 @@
+.character-bg{
+    background-color: black;
+}
+
+.character-info{
+    margin: 0 auto;
+    max-width: 960px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.image > img {
+    display: block;
+    width: auto;
+    min-height: 300px;
+    max-height: 350px;
+    padding: 10px;
+}
+
+.info{
+    max-width: 640px;
+    max-height: 350px;
+}

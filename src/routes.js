@@ -10,7 +10,9 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/:page" exact component={Main} />
-                
+                <Route path="/" exact>
+                    <Redirect to="/1" />
+                </Route>
                 <Route path="/character/:id" exact component={CharacterPage} />
             </Switch>
         </BrowserRouter>

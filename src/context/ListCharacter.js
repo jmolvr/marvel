@@ -1,35 +1,27 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import api from '../services/api';
+import api, {getListCharacter, getCharacterDetails, getListSeries} from '../services/api';
 
 const ListCharacterContext = createContext();
 
 export default function ListCharacterProvider({ children }) {
     const [listCharacter, setListCharacter] = useState([]);
-    const [character, setCharacter] = useState({});
+    const [character, setCharacter] = useState(null);
     const [listSeries, setListSeries] = useState([]);
 
-    async function handleLoadCharacter({ id }) {
-        const responseCharacter = await api.get("/characters/" + id + "?ts=1609028329&apikey=079df4f6c6a9cc8debb648d7454c46c7&hash=cf4ab3509d919b6b843b87abbdcd50bd&offset=0");
-        const responseListSeries = await api.get("/characters/" + id + "/series?ts=1609028329&apikey=079df4f6c6a9cc8debb648d7454c46c7&hash=cf4ab3509d919b6b843b87abbdcd50bd&offset=0");
-        setCharacter(responseCharacter.data.data.results[0]);
-        setListSeries(responseListSeries.data.data.results);
+    async function handleLoadCharacter(id) {
+        const offset = 0;
+        const responseCharacter = await getCharacterDetails(id);
+        const responseListSeries = await getListSeries(id, offset)
+        setCharacter(responseCharacter);
+        setListSeries(responseListSeries);
     }
 
 
-    async function handleLoadCharacterList({page}){
-
-
-        /*function pagetoOffset(page){
-            if(!page) page = 1;
-            const resultado = (page-1) * 20;
-            return resultado;
-        }*/
-
-        //const offset = (page -1) * 20;
-
-        const response = await api.get("/characters?ts=1609028329&apikey=079df4f6c6a9cc8debb648d7454c46c7&hash=cf4ab3509d919b6b843b87abbdcd50bd&offset=" + page);
-        setListCharacter(response.data.data.results);
+    async function handleLoadCharacterList(page, query){
+        const offset = (page -1) * 20;
+        const response = await getListCharacter(offset, query);
+        setListCharacter(response);
     }
 
     return (
