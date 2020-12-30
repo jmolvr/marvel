@@ -52,7 +52,7 @@ export default function CharacterDetails({ character }) {
                     </div>
                 </div>
                 <div className="image">
-                    <img src={imgsrc} />
+                    <img alt={characterEdit.name} src={imgsrc} />
                 </div>
             </div>
         </div>

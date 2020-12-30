@@ -10,6 +10,10 @@ export default function ListCharacterProvider({ children }) {
     const [listSeries, setListSeries] = useState({});
 
     async function handleLoadCharacter(id, page) {
+        if(isNaN(page)){
+            throw new Error("page must be a number");
+        }
+
         const offset = (page -1) * 20;
         const responseCharacter = await getCharacterDetails(id); 
         const responseListSeries = await getListSeries(id, offset);
@@ -19,6 +23,9 @@ export default function ListCharacterProvider({ children }) {
 
 
     async function handleLoadCharacterList(page, query){
+        if(isNaN(page)){
+            throw new Error("page must be a number");
+        }
         const offset = (page -1) * 20;
         const response = await getListCharacter(offset, query);
         setListCharacter(response);

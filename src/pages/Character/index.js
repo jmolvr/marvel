@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Card from '../../components/Card';
@@ -18,11 +18,17 @@ export default function CharacterPage() {
     const { handleLoadCharacter } = useHandleLoadCharacter();
     const { isLoading, setLoading } = useLoading();
     let { id, page } = useParams();
+    let history = useHistory();
 
     useEffect(() => {
         async function loadData() {
             setLoading(true);
-            await handleLoadCharacter(id, page);
+            try {
+                await handleLoadCharacter(id, page);
+            } catch (error) {
+                history.push("error/404");
+            }
+            
             window.scrollTo(0, 0);
             setLoading(false)
         }

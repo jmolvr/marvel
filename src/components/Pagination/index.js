@@ -5,7 +5,7 @@ import './index.css';
 
 export default function Pagination({ page, totalItems }) {
     const [list, setList] = useState([]);
-    const [maxPages, setMaxPages] = useState(Math.ceil(Number(totalItems)/20));
+    const [maxPages] = useState(Math.ceil(Number(totalItems)/20));
     let history = useHistory();
     
     function handleClickPrevious() {
@@ -21,6 +21,7 @@ export default function Pagination({ page, totalItems }) {
 
     useEffect(() => {
         let listAux = [];
+
         if(maxPages <= 10){
             for(let i = 1; i <= maxPages; i++){
                 listAux.push(i);
@@ -48,14 +49,19 @@ export default function Pagination({ page, totalItems }) {
 
 
     return (
-        <div className="pagination">
-            <a onClick={handleClickPrevious}>&laquo;</a>
-            {list.map(element =>
-                <Link key={element} to={`${element}`} className={page == element && "active"}>
-                    {element}
-                </Link>
-            )}
-            <a onClick={handleClickForward}>&raquo;</a>
+        <div>
+            {!!totalItems && 
+                <div className="pagination">
+                <a onClick={handleClickPrevious}>&laquo;</a>
+                {list.map(element =>
+                    <Link key={element} to={`${element}`} className={page == element && "active"}>
+                        {element}
+                    </Link>
+                )}
+                <a onClick={handleClickForward}>&raquo;</a>
+            </div>
+            }
         </div>
+        
     );
 }
