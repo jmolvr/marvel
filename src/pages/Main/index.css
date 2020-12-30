@@ -18,3 +18,13 @@
     display: flex;
     justify-content: center;
 }
+
+
+.loading{
+    max-width: 960px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

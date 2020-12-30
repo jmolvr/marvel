@@ -13,7 +13,7 @@ export default function Routes() {
                 <Route path="/" exact>
                     <Redirect to="/1" />
                 </Route>
-                <Route path="/character/:id" exact component={CharacterPage} />
+                <Route path="/character/:id/series/:page?" exact component={CharacterPage} />
             </Switch>
         </BrowserRouter>
     );

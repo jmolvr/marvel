@@ -5,7 +5,7 @@ import './index.css';
 
 export default function Card({ id, nome, imgsrc }) {
     return (
-        <Link to={"/character/" + id}>
+        <Link to={`/character/${id}/series/1`}>
             <div className="card">
                 <img src={imgsrc} alt={nome}/>
                 <div className="container">

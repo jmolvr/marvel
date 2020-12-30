@@ -17,8 +17,9 @@ export async function getListCharacter(offset, query) {
             "nameStartsWith": query
         }
     });
-
-    return response.data.data.results;
+    const totalItems = response.data.data.total;
+    const responseList = response.data.data.results;
+    return {responseList, totalItems};
 }
 
 export async function getCharacterDetails(id){
@@ -34,7 +35,9 @@ export async function getListSeries(id, offset){
             "offset": offset
         }
     });
-    return response.data.data.results;
+    const totalItems = response.data.data.total;
+    const responseListSeries = response.data.data.results;
+    return {responseListSeries, totalItems};
 }
 
 

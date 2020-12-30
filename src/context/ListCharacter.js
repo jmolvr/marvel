@@ -1,18 +1,18 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import api, {getListCharacter, getCharacterDetails, getListSeries} from '../services/api';
+import {getListCharacter, getCharacterDetails, getListSeries} from '../services/api';
 
 const ListCharacterContext = createContext();
 
 export default function ListCharacterProvider({ children }) {
     const [listCharacter, setListCharacter] = useState([]);
     const [character, setCharacter] = useState(null);
-    const [listSeries, setListSeries] = useState([]);
+    const [listSeries, setListSeries] = useState({});
 
-    async function handleLoadCharacter(id) {
-        const offset = 0;
-        const responseCharacter = await getCharacterDetails(id);
-        const responseListSeries = await getListSeries(id, offset)
+    async function handleLoadCharacter(id, page) {
+        const offset = (page -1) * 20;
+        const responseCharacter = await getCharacterDetails(id); 
+        const responseListSeries = await getListSeries(id, offset);
         setCharacter(responseCharacter);
         setListSeries(responseListSeries);
     }
