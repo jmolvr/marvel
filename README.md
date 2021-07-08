@@ -1,3 +1,9 @@
+<image src="docs/images/marvel_characters.png">
+<a href="https://pt-br.reactjs.org/">🔗 React</a>
+
+<p align="center">Marvel characters and their stories.</p>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
